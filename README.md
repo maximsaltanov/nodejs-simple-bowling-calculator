@@ -38,6 +38,36 @@ Body:
 }
 ```
 
+## Examples of http requests
+
+```
+PUT /scores HTTP/1.1
+Host: localhost:8000
+Connection: close
+Accept: */*
+User-Agent: Mozilla/4.0 (compatible; esp8266 Lua; Windows NT 5.1)
+Content-Type: application/json
+Content-Length: 26
+
+{"first":"1","second":"8"}
+```
+
+```
+GET http://localhost:8000/scores HTTP/1.1
+Host: localhost:8000
+Connection: close
+Accept: */*
+User-Agent: Mozilla/4.0 (compatible; esp8266 Lua; Windows NT 5.1)
+```
+
+```
+POST /game HTTP/1.1
+Host: localhost:8000
+Connection: close
+Accept: */*
+User-Agent: Mozilla/4.0 (compatible; esp8266 Lua; Windows NT 5.1)
+```
+
 ## Rules of bowling
 
 A game consists of ten frames. Frame 1-9 are composed of two rolls. Frame 10 can be composed of up to three rolls depending on if the first rolls in the frame is a strike or a spare.
