@@ -11,7 +11,9 @@ This is a simple Node.js app which implemented an HttpServer and web API that ca
 - Create a '* .json' file to store the game results and specify a path to it in the config.json ({"storagePath": "<path_to_game.json file>"})
 - At this point you can run 'npm start' or 'npm run dev' to see the example app at http://localhost:8000.
 
-## API Contract implements three methods:
+## API Contract
+
+It implements three methods:
 
 ```
 POST /game
@@ -47,7 +49,7 @@ Body:
 }
 ```
 
-## Examples of http requests
+## Examples
 
 ```
 PUT /scores HTTP/1.1
