@@ -2,6 +2,15 @@
 
 This is a simple Node.js app which implemented an HttpServer and web API that calculates the score during a game of ten pin bowling. Also this app use a JSON file as a permanent storage.
 
+## Quick start
+
+- Make sure that you have Node.js and npm installed.
+- Clone this repo using git clone --depth=1 https://github.com/maximsaltanov/nodejs-simple-bowling-calculator.git <YOUR_PROJECT_NAME>
+- Move to the appropriate directory: cd <YOUR_PROJECT_NAME>.
+- Run 'npm install' in order to install dependencies
+- Create a '* .json' file to store the game results and specify a path to it in the config.json ({"storagePath": "<path_to_game.json file>"})
+- At this point you can run 'npm start' or 'npm run dev' to see the example app at http://localhost:8000.
+
 ## API Contract implements three methods:
 
 ```
