@@ -4,8 +4,8 @@
   "description": "Ten-pin bowling",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Maxim Saltanov",
   "license": "MIT",
