@@ -4,14 +4,15 @@ class gameServer{
 
   constructor(game, storage){    
     this.game = game;
-    this.storage = storage;
-    this.server = null;
+    this.storage = storage;    
   }
-
-  start(){
-    if (this.server) return;
-
+  
+  start(port = 8000){            
+    
     let self = this;
+
+    if (this.server) this.close();
+
     //// creating of a very simple http web server
     this.server = new http.Server(function(req, res) {
       
@@ -28,14 +29,18 @@ class gameServer{
       //// add a frame
       else if (req.method === 'PUT' && req.url === '/scores') {            
         self._addFrame(req, res);
-      }
+      }      
       else {
         res.setHeader('Content-Type', 'text/html; charset=utf-8');
         res.end('http server is started.... please see <a target="_blank" href="https://github.com/maximsaltanov/nodejs-simple-bowling-calculator/blob/master/README.md">docs</a>');
       }
     });
 
-    this.server.listen(process.env.PORT || "8000", process.env.HOST || "localhost");
+    this.server.listen(process.env.PORT || port, process.env.HOST || "localhost");
+  }  
+
+  stop(){            
+    this.server.close();
   }  
 
   _getScore(res){
@@ -45,7 +50,9 @@ class gameServer{
   _resetGame(res){    
     this.game.resetFrames();        
     // save frames
-    this.storage.write(this.game.frames);
+    if (this.storage){
+      this.storage.write(this.game.frames);
+    }
     // set response
     res.statusCode = 204;
     res.end('');    
@@ -66,7 +73,9 @@ class gameServer{
         self.game.addFrame(+json['first'], +json['second'], json['third'] != null ? +json['third'] : null);
         
         // save frames
-        self.storage.write(self.game.frames);
+        if (self.storage){
+          self.storage.write(self.game.frames);
+        }
         res.end('');
       }
       catch (err) { 
