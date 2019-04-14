@@ -11,7 +11,7 @@ class gameServer{
     
     let self = this;
 
-    if (this.server) this.close();
+    if (this.server) this.stop();
 
     //// creating of a very simple http web server
     this.server = new http.Server(function(req, res) {
